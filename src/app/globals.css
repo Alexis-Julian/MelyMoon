@@ -3,31 +3,231 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+	--test-proband: 4s;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	height: 100vh;
+	width: 100vw;
+}
+
+@layer components {
+	@keyframes slidein {
+		from {
+			transform: translateX(0%);
+		}
+
+		to {
+			transform: translateX(100%);
+		}
+	}
+	@keyframes draw {
+		0% {
+			fill: #b784b7;
+		}
+		50% {
+			fill: white;
+		}
+		100% {
+			fill: #b784b7;
+			/* stroke-dashoffset: 0; */
+		}
+	}
+	.test path {
+		stroke: #945227;
+		stroke-width: 1;
+
+		stroke-dasharray: 500;
+		stroke-dashoffset: 500;
+	}
+	/* PATA 18 */
+	.test > g:nth-child(7) > path {
+		animation: draw var(--test-proband) linear forwards;
+		animation-delay: 9s;
+	}
+
+	/* PATA 17 */
+	.test > g:nth-child(1) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 8.5s;
+	}
+
+	/* PATA 16 */
+	.test > g:nth-child(10) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 8s;
+	}
+
+	/* PATA 15*/
+	.test > g:nth-child(6) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 7.5s;
+	}
+
+	/* PATA 14 */
+	.test > g:nth-child(2) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 7s;
+	}
+
+	/* PATA 13 */
+	.test > g:nth-child(8) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 6.5s;
+	}
+
+	/* PATA 13 */
+	.test > g:nth-child(13) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 6s;
+	}
+
+	/* PATA 12 */
+	.test > g:nth-child(11) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 5.5s;
+	}
+
+	/*PATA 10  */
+	.test > g:nth-child(4) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 5s;
+	}
+
+	/* PATA 8 */
+	.test > g:nth-child(12) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 4.5s;
+	}
+	/* PATA 8 */
+	.test > g:nth-child(16) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 4s;
+	}
+
+	/* PATA 7 */
+	.test > g:nth-child(17) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 3.5s;
+	}
+
+	/* PATA 6 */
+	.test > g:nth-child(5) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 3s;
+	}
+
+	/* PATA 5 */
+	.test > g:nth-child(15) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 2.5s;
+	}
+
+	/* PATA 4 */
+	.test > g:nth-child(3) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 2s;
+	}
+
+	/* PATA 3 */
+	.test > g:nth-child(14) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 1.5s;
+	}
+
+	/* PATA 2 */
+	.test > g:nth-child(9) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 1s;
+	}
+
+	/* PATA 1 */
+	.test > g:nth-child(18) > path {
+		animation: draw var(--test-proband) linear forwards infinite;
+		animation-delay: 0.5s;
+	}
+
+	/* .test > g > path {
+		fill: blue;
+	} */
+
+	.st0 {
+		fill: #b784b7;
+	}
+	.st1 {
+		fill: #b784b7;
+	}
+	.st2 {
+		fill: #b784b7;
+	}
+	.st3 {
+		fill: #b784b7;
+	}
+	.st4 {
+		fill: #b784b7;
+	}
+	.st5 {
+		fill: #b784b7;
+	}
+	.st6 {
+		fill: #b784b7;
+	}
+	.st7 {
+		fill: #b784b7;
+	}
+	.st8 {
+		fill: #b784b7;
+	}
+
+	.loader {
+		width: 100px;
+		height: 100px;
+		background: linear-gradient(
+			165deg,
+			rgba(255, 255, 255, 1) 0%,
+			rgb(220, 220, 220) 40%,
+			rgb(170, 170, 170) 98%,
+			rgb(10, 10, 10) 100%
+		);
+		border-radius: 50%;
+		position: relative;
+	}
+
+	.loader:before {
+		position: absolute;
+		content: "";
+		width: 100%;
+		height: 100%;
+		border-radius: 100%;
+		border-bottom: 0 solid #ffffff05;
+		box-shadow: 0 -10px 20px 20px #ffffff40 inset,
+			0 -5px 15px 10px #ffffff50 inset, 0 -2px 5px #ffffff80 inset,
+			0 -3px 2px #ffffffbb inset, 0 2px 0px #ffffff, 0 2px 3px #ffffff,
+			0 5px 5px #ffffff90, 0 10px 15px #ffffff60, 0 10px 20px 20px #ffffff40;
+		filter: blur(3px);
+		animation: 2s rotate linear infinite;
+	}
+
+	@keyframes rotate {
+		100% {
+			/* transform: rotate(360deg); */
+		}
+	}
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
 }
