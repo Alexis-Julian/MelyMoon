@@ -23,6 +23,48 @@ body {
 }
 
 @layer components {
+	/* SVG DEL BOTON LOGIN */
+	.cls-1 {
+		stroke-width: 3.04px;
+	}
+	.cls-3 {
+		fill: #936a92;
+	}
+	.cls-1,
+	.cls-2 {
+		fill: none;
+		stroke: #000;
+		stroke-miterlimit: 10;
+	}
+
+	@keyframes button-draw {
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+
+	.button-login * {
+		transition-property: all;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 300ms;
+	}
+
+	.button-login:hover * .cls-3 {
+		animation: button-draw 2s linear forwards infinite alternate;
+		stroke: rgba(0, 0, 0, 0.5);
+		stroke-width: 3;
+		stroke-dasharray: 1000;
+		stroke-dashoffset: 1000;
+	}
+
+	/* .cls-3 {
+		fill: #474f7a;
+	} */
+
+	.cls-2 {
+		stroke-width: 4.05px;
+	}
+
 	@keyframes slidein {
 		from {
 			transform: translateX(0%);
@@ -53,7 +95,7 @@ body {
 	}
 	/* PATA 18 */
 	.test > g:nth-child(7) > path {
-		animation: draw var(--test-proband) linear forwards;
+		animation: draw var(--test-proband) linear forwards infinite;
 		animation-delay: 9s;
 	}
 

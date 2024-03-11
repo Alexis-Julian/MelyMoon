@@ -2,6 +2,7 @@
 import Image from "next/image";
 import StyledTypography from "./StyledTypography";
 import StyledInput from "./StyledInput";
+import SvgButton from "./SvgButton";
 
 export default function FormLogin() {
 	function handleSubmitForm() {}
@@ -32,11 +33,11 @@ export default function FormLogin() {
 				</StyledTypography>
 			</div>
 			<div className="h-full w-full flex items-center justify-center">
-				<div className="relative  w-full h-full  p-4  flex items-center justify-center">
-					<button className="text-lg font-extrabold h-[105%] w-[105%]  bg-[url('/svg/recurso.svg')]  rounded-md z-50">
+				<div className="relative w-full h-full  flex items-center justify-center   p-4 ">
+					<button className="button-login text-lg relative    font-extrabold  h-full w-full z-50">
+						<SvgButton />
 						INGRESAR
 					</button>
-					{/* <div className="absolute   z-50 bg-center h-[80%] w-[80%]   top-0"></div> */}
 				</div>
 			</div>
 		</form>
