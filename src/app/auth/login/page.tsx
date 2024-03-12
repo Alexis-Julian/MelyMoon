@@ -7,6 +7,7 @@ export default function Login() {
 			<div className="loader size-[180px] p-1 relative   flex items-center border-4 border-white rounded-full  justify-center  ">
 				<div className="absolute size-[105%] shadow-icon rounded-full -z-10"></div>
 				<div className="absolute size-[100%] shadow-icon-inset rounded-full -z-10"></div>
+
 				<Image
 					src={"/svg/cat_icon.svg"}
 					height={180}

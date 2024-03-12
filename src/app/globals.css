@@ -23,6 +23,62 @@ body {
 }
 
 @layer components {
+	.cat-1 {
+		fill: #fff;
+	}
+
+	.cat-2 {
+		fill: #ff5c64;
+	}
+
+	.cat-3 {
+		opacity: 0.5;
+	}
+
+	.cat-4 {
+		opacity: 0.35;
+	}
+
+	.cat-5 {
+		opacity: 0.15;
+	}
+
+	.cat-6 {
+		fill: #6b184e;
+	}
+
+	.cat-7 {
+		clip-path: url(#clippath);
+	}
+
+	.cat-8 {
+		fill: none;
+	}
+
+	.cat-9 {
+		fill: #000072;
+	}
+
+	.cat-10 {
+		fill: #8e8fb3;
+	}
+
+	.cat-11 {
+		fill: #ff0068;
+	}
+
+	.cat-12 {
+		fill: #f27e80;
+	}
+
+	.cat-13 {
+		fill: #7cff8f;
+	}
+
+	.cat-14 {
+		opacity: 0.25;
+	}
+
 	/* SVG DEL BOTON LOGIN */
 	.cls-1 {
 		stroke-width: 3.04px;
@@ -56,10 +112,6 @@ body {
 		stroke-dasharray: 1000;
 		stroke-dashoffset: 1000;
 	}
-
-	/* .cls-3 {
-		fill: #474f7a;
-	} */
 
 	.cls-2 {
 		stroke-width: 4.05px;
