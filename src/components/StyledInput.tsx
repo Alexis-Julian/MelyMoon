@@ -16,7 +16,8 @@ export default function StyledInput({
 	name?: string;
 }) {
 	const variantClasses: { [key: string]: string } = {
-		default: "bg-tertiary  rounded-md p-2 w-full outline-white ",
+		default:
+			"bg-tertiary  rounded-md p-2 w-full outline-white/5 font-extrabold",
 	};
 
 	const clasess = [variantClasses["default"], className].join(" ");

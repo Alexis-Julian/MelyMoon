@@ -23,6 +23,44 @@ body {
 }
 
 @layer components {
+	.font-dancing {
+		font-family: "Dancing Script Variable", cursive;
+	}
+
+	.shadow-inputs {
+		box-shadow: 6px 5px 2px 1px rgba(255, 208, 236, 1);
+		-webkit-box-shadow: 6px 5px 2px 1px rgba(255, 208, 236, 1);
+		-moz-box-shadow: 6px 5px 2px 1px rgba(255, 208, 236, 1);
+	}
+	.flecha {
+		float: left;
+		position: relative;
+		height: 64px;
+		width: 240px;
+
+		background-color: #b884b7;
+		border-right: none;
+		border-color: white solid 1px 1px;
+	}
+
+	.flecha:after {
+		position: absolute;
+		top: 13px;
+		right: -19px;
+		width: 38.5px;
+		height: 38.5px;
+
+		transform: rotate(134deg) skewX(-10deg) skewY(-10deg);
+		background-color: #b884b7;
+		content: "";
+	}
+
+	.grid-register {
+		display: grid;
+		grid-template-columns: 1fr 0.3fr;
+		grid-template-rows: 0.5fr 1fr 0.5fr;
+	}
+
 	.cat-1 {
 		fill: #fff;
 	}
@@ -315,7 +353,7 @@ body {
 
 	@keyframes rotate {
 		100% {
-			/* transform: rotate(360deg); */
+			transform: rotate(360deg);
 		}
 	}
 }

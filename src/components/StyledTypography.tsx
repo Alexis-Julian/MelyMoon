@@ -1,3 +1,5 @@
+import "@fontsource-variable/dancing-script";
+
 import { TypographyClassVariantTypes } from "@/shared/types";
 
 export default function StyledTypography({
@@ -19,6 +21,7 @@ export default function StyledTypography({
 		body: "text-xl",
 		medium: "text-md",
 		big: "text-6xl uppercase",
+		biggeer_dancing: "text-7xl font-extralight font-dancing",
 		bigger: "text-4xl sm:text-5xl md:text-7xl uppercase",
 	};
 
