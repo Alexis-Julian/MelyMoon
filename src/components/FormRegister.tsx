@@ -1,8 +1,13 @@
+"use client";
 import Image from "next/image";
 import StyledInput from "./StyledInput";
 import StyledTypography from "./StyledTypography";
-
+import SvgArrow from "./SvgArrow";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 export default function FormRegister() {
+	const router = useRouter();
+
 	function LogoLogin() {
 		return (
 			<div className="bg-none loader size-[180px] p-1 relative    flex items-center border-4 border-white rounded-full  justify-center  ">
@@ -19,11 +24,21 @@ export default function FormRegister() {
 			</div>
 		);
 	}
+
+	function handleNavigationToLogin(e: any) {
+		e.preventDefault();
+		return router.push("/auth/login");
+	}
 	// bg-[url('/image/bg-hands-cats.webp')] bg-[position:0%_50px]
 	return (
 		<form className="relative grid-register h-full w-full  rounded-md p-2 z-50">
-			<header className="flex items-start justify-around ">
-				<div>Arrow</div>
+			<header className="flex items-center justify-around ">
+				<button
+					className="h-[80px] w-[80px] "
+					onClick={handleNavigationToLogin}
+				>
+					<SvgArrow />
+				</button>
 				<StyledTypography
 					variant="biggeer_dancing"
 					className="justify-self-end text-8xl"

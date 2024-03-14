@@ -23,6 +23,20 @@ body {
 }
 
 @layer components {
+	.svgArrow {
+		rotate: 180deg;
+		stroke: rgba(255, 255, 255, 0.5);
+		stroke-width: 1;
+		stroke-dasharray: 0;
+		stroke-dashoffset: 1000;
+	}
+
+	@keyframes svgArrow {
+		to {
+			stroke: cyan;
+		}
+	}
+
 	.font-dancing {
 		font-family: "Dancing Script Variable", cursive;
 	}
