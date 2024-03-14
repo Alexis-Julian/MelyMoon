@@ -4,7 +4,9 @@ import StyledInput from "./StyledInput";
 import StyledTypography from "./StyledTypography";
 import SvgArrow from "./SvgArrow";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { FaGoogle, FaFacebook, FaXbox, FaApple } from "react-icons/fa";
+
+// import { useEffect } from "react";
 export default function FormRegister() {
 	const router = useRouter();
 
@@ -87,11 +89,22 @@ export default function FormRegister() {
 				</label>
 			</div>
 			<div className="col-start-1 col-end-2 row-start-3 row-end-4 grid grid-cols-2 items-center place-items-center text-2xl font-extrabold">
+				<div className="h-full w-full flex items-center justify-center gap-4 [&>*:nth-child(n)]:flex [&>*:nth-child(n)]:justify-center [&>*:nth-child(n)]:items-center [&>*:nth-child(n)]:rounded-full  ">
+					<button className="size-16 bg-white  stroke-black  fill-transparent  hover:scale-110 transition-all">
+						<FaGoogle />
+					</button>
+					<button className="size-16 bg-[#0966de]   text-white hover:scale-110 transition-all">
+						<FaFacebook />
+					</button>
+					<button className="size-16 bg-[#141414]  text-white hover:scale-110 transition-all">
+						<FaApple />
+					</button>
+					<button className="size-16 bg-[#076907]  text-white   hover:scale-110 transition-all">
+						<FaXbox />
+					</button>
+				</div>
 				<button className="flecha shadow-inputs hover:scale-105 hover:translate-x-4 transition-all">
-					Eliminar
-				</button>
-				<button className="flecha shadow-inputs hover:scale-105 hover:translate-x-4 transition-all">
-					Guardar
+					Crear cuenta
 				</button>
 			</div>
 			<div className="col-start-2 col-end-3 row-start-1 row-end-4 grid grid-rows-4 items-center place-items-center">
