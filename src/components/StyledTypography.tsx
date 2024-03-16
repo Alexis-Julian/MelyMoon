@@ -32,7 +32,7 @@ export default function StyledTypography({
 		primary: "text-accent",
 		neutral: "text-neutral-300",
 	};
-	console.log(className);
+	// console.log(className);
 	const classes = [
 		variantClasses[variant as keyof typeof variantClasses],
 		colorClasses[color as keyof typeof colorClasses],

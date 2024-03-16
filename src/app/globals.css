@@ -23,6 +23,18 @@ body {
 }
 
 @layer components {
+	.svgborder-1 {
+		fill: #383635;
+	}
+
+	.borderChat {
+		animation: button-draw 1s linear forwards;
+		stroke: rgba(0, 0, 0, 0.5);
+		stroke-width: 2;
+		stroke-dasharray: 1000;
+		stroke-dashoffset: 1000;
+	}
+
 	.svgArrow {
 		rotate: 180deg;
 		stroke: rgba(255, 255, 255, 0.5);

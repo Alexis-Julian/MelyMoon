@@ -7,6 +7,7 @@ export default function StyledInput({
 	type,
 	props,
 	name,
+	placeHolder,
 }: {
 	variant?: string;
 	color?: string;
@@ -14,6 +15,7 @@ export default function StyledInput({
 	type: InputTypes;
 	props?: any;
 	name?: string;
+	placeHolder?: string;
 }) {
 	const variantClasses: { [key: string]: string } = {
 		default:
@@ -21,5 +23,13 @@ export default function StyledInput({
 	};
 
 	const clasess = [variantClasses["default"], className].join(" ");
-	return <input className={clasess} type={type} {...props} name={name} />;
+	return (
+		<input
+			className={clasess}
+			type={type}
+			placeholder={placeHolder ? placeHolder : ""}
+			{...props}
+			name={name}
+		/>
+	);
 }
