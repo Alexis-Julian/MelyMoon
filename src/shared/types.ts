@@ -3,6 +3,7 @@ export type TypographyClassVariantTypes =
 	| "h3"
 	| "body"
 	| "medium"
+	| "small"
 	| "big"
 	| "biggeer_dancing"
 	| "bigger";
