@@ -1,5 +1,5 @@
 "use client";
-import CardUser from "./CardUser";
+import ChatCardUser from "./ChatCardUser";
 import StyledTypography from "./StyledTypography";
 import { useEffect, useState, useRef } from "react";
 
@@ -66,13 +66,7 @@ export default function Chat() {
 					</StyledTypography>
 				</div>
 				<nav className="bg-primary/20 h-full ">
-					<ul
-						className={`flex flex-col gap-4 h-full`}
-						/* style={{
-							overflowY: useChatUserActive == null ? "hidden" : "scroll",
-						}} */
-						ref={element}
-					>
+					<ul className={`flex flex-col gap-4 h-full`} ref={element}>
 						{contactos.map((user, index) => {
 							return (
 								<li
@@ -90,7 +84,7 @@ export default function Chat() {
 										order: useChatUserActive == index ? -1 : 0,
 									}}
 								>
-									<CardUser
+									<ChatCardUser
 										props={user}
 										active={useChatUserActive == index ? true : false}
 										closeChat={handleCloseChat}
