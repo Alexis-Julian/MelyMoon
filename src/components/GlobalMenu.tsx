@@ -2,7 +2,15 @@ import ChatHeader from "./MenuHeader";
 import MenuItem from "./MenuItem";
 import { useEffect, useState } from "react";
 
-export default function GlobalMenu({ changeMenu }: { changeMenu: any }) {
+export default function GlobalMenu({
+	changeMenu,
+	handleOpenMenu,
+	statusMenu,
+}: {
+	changeMenu: any;
+	handleOpenMenu: any;
+	statusMenu: boolean;
+}) {
 	const List = [
 		{ name: "Inicio" },
 		{ name: "Buscar" },
@@ -12,11 +20,14 @@ export default function GlobalMenu({ changeMenu }: { changeMenu: any }) {
 	];
 
 	function handleChangeMenu(item: string) {
-		changeMenu(item);
+		handleOpenMenu();
+		setTimeout(() => {
+			changeMenu(item);
+		}, 150);
 	}
 
 	return (
-		<div className="size-full bg-white/30 rounded-lg p-1">
+		<div className="size-full rounded-lg p-1">
 			<ChatHeader>Menu</ChatHeader>
 
 			<nav>

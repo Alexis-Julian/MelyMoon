@@ -4,7 +4,7 @@ import ChatHeader from "./MenuHeader";
 import StyledTypography from "./StyledTypography";
 import { useEffect, useState, useRef } from "react";
 
-export default function GlobalChat() {
+export default function GlobalChat({ setMenuActive }: { setMenuActive: any }) {
 	function handleOpenChat(index: number) {
 		if (useChatUserActive == index) return;
 		setChatUserActive(index);
@@ -55,8 +55,13 @@ export default function GlobalChat() {
 			status: false,
 		},
 	];
+
+	useEffect(() => {
+		setMenuActive(true);
+	}, [setMenuActive]);
+
 	return (
-		<div className="h-full w-full bg-white/30  rounded-xl flex flex-col p-1 gap-2">
+		<div className="h-full w-full  flex flex-col p-1 gap-2">
 			<ChatHeader>Bandeja de entrada</ChatHeader>
 			<section className="mt-1 h-[90%] flex flex-col gap-1 ">
 				<div className="bg-primary/20 ">
