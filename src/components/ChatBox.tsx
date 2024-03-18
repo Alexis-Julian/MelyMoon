@@ -28,7 +28,7 @@ export default function ChatBox({ closeChat }: { closeChat: any }) {
 				<SvgVBorderChat />
 			</div>
 			<div
-				className={`flex flex-col gap-2 bg-white/15 rounded-lg m-1 h-[80%] border-2 border-primary/80  p-1 ${StylesMessage}`}
+				className={`flex flex-col gap-2 bg-white/15 rounded-lg  m-1 h-[80%] border-2 border-primary/80  p-1 ${StylesMessage}`}
 			>
 				{messages.map((message, index) => {
 					return <ChatMessage key={index} props={message} />;

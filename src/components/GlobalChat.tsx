@@ -1,9 +1,10 @@
 "use client";
-import ChatCardUser from "./ChatCardUser";
+import ChatCardUser from "./ChatItemsUser";
+import ChatHeader from "./MenuHeader";
 import StyledTypography from "./StyledTypography";
 import { useEffect, useState, useRef } from "react";
 
-export default function Chat() {
+export default function GlobalChat() {
 	function handleOpenChat(index: number) {
 		if (useChatUserActive == index) return;
 		setChatUserActive(index);
@@ -56,9 +57,7 @@ export default function Chat() {
 	];
 	return (
 		<div className="h-full w-full bg-white/30  rounded-xl flex flex-col p-1 gap-2">
-			<header className="h-[10%] min-h-[82px] max-h-[82px] bg-primary/20  rounded-t-lg flex items-center justify-center  ">
-				<StyledTypography variant="h3">Bandeja de entrada</StyledTypography>
-			</header>
+			<ChatHeader>Bandeja de entrada</ChatHeader>
 			<section className="mt-1 h-[90%] flex flex-col gap-1 ">
 				<div className="bg-primary/20 ">
 					<StyledTypography variant="body" className="text-black/60 pl-4">
@@ -70,7 +69,7 @@ export default function Chat() {
 						{contactos.map((user, index) => {
 							return (
 								<li
-									className={`bg-primary/80 rounded-md  cursor-pointer hover:bg-primary/40 transition-all ${
+									className={`bg-primary/80 rounded-md  cursor-pointer transition-all ${
 										useChatUserActive == index && "bg-primary/40 cursor-default"
 									} `}
 									onClick={() => handleOpenChat(index)}

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Alice } from "next/font/google";
 import "./globals.css";
-import GlobalComponents from "@/components/GlobalComponents";
 
 const inter = Alice({ weight: "400", subsets: ["cyrillic"] });
 
@@ -17,14 +16,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body
-				className={
-					inter.className + ` bg-gradient-to-b from-[#eea5a6] to-[#ffd0ec]`
-				}
-			>
-				<GlobalComponents />
-				<div className="h-[90%]">{children}</div>
-			</body>
+			<body className={inter.className}>{children}</body>
 		</html>
 	);
 }
