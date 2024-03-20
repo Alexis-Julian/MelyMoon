@@ -1,20 +1,34 @@
 "use client";
 import GlobalHeader from "./GlobalHeader";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import GlobalMenu from "./GlobalMenu";
 import GlobalChat from "./GlobalChat";
 import MenuSectionNotification from "./MenuSectionNotification";
 import MenuSectionSearch from "./MenuSectionSearch";
 import MenuSectionProfile from "./MenuSectionProfile";
 import ChatHeader from "./MenuHeader";
+import GlobalMenuPost from "./GlobalMenuPost";
+import { SectionMenuPost, SectionMenuUser } from "@/shared/consts";
 
 export default function GlobalComponents() {
-	const [useMenuActive, setMenuActive] = useState<boolean>(false);
-	const [useTypeMenu, setTypeMenu] = useState<string>("Inicio");
-
-	function handleOpenMenu() {
-		setMenuActive(!useMenuActive);
+	function handleOpenMenu(): void {
+		return setMenuActive(!useMenuActive);
 	}
+
+	const [useMenuActive, setMenuActive] = useState<boolean>(false);
+
+	const [useTypeMenu, setTypeMenu] = useState<string>(SectionMenuUser[0].name);
+
+	const [useTypeMenuPost, setTypeMenuPost] = useState<string>(
+		SectionMenuPost[0].name
+	);
+
+	const ListPost = [
+		{ name: "Inicio", components: [] },
+		{ name: "Crear Publicacion", components: [] },
+		{ name: "Eliminar Publicacion", components: [] },
+		{ name: "Ver tus Publicaciones", components: [] },
+	];
 
 	const List = [
 		{
@@ -24,10 +38,8 @@ export default function GlobalComponents() {
 					key={"home"}
 					changeMenu={setTypeMenu}
 					handleOpenMenu={handleOpenMenu}
-					statusMenu={useMenuActive}
 				/>,
 			],
-			active: false,
 		},
 		{
 			name: "Buscar",
@@ -39,7 +51,6 @@ export default function GlobalComponents() {
 		{
 			name: "Mensajes",
 			components: [<GlobalChat key={"chat"} setMenuActive={setMenuActive} />],
-			active: false,
 		},
 		{
 			name: "Notificaciones",
@@ -49,16 +60,25 @@ export default function GlobalComponents() {
 					key={"notification"}
 				/>,
 			],
-			active: false,
 		},
 		{
 			name: "Perfil",
 			components: [
 				<MenuSectionProfile key={"perfil"} setMenuActive={setMenuActive} />,
 			],
-			active: false,
 		},
 	];
+
+	function RenderMenus({ menu }: any) {
+		return (
+			menu.name == useTypeMenu && (
+				<div className="bg-white/30  rounded-xl size-full p-1 flex flex-col  gap-4 justify-center overflow-hidden">
+					<ChatHeader>{menu.name}</ChatHeader>
+					<section className="h-[90%]">{menu.components}</section>
+				</div>
+			)
+		);
+	}
 
 	return (
 		<>
@@ -69,17 +89,14 @@ export default function GlobalComponents() {
 				} `}
 			>
 				{List.map((menu, index) => {
-					return (
-						menu.name == useTypeMenu && (
-							<div
-								key={index}
-								className="bg-white/30  rounded-xl size-full p-1 flex flex-col  gap-4 justify-center overflow-hidden"
-							>
-								<ChatHeader>{menu.name}</ChatHeader>
-								<section className="h-[90%]">{menu.components}</section>
-							</div>
-						)
-					);
+					return <RenderMenus menu={menu} key={index} />;
+				})}
+			</div>
+
+			<div className={`absolute right-0 h-[90%] w-[20%] z-50 transition-all`}>
+				{ListPost.map((menuPost, index) => {
+					console.log(menuPost);
+					return <RenderMenus menu={menuPost} key={index} />;
 				})}
 			</div>
 		</>

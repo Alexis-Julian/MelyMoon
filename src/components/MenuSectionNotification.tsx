@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import StyledTypography from "./StyledTypography";
 import ItemCardNotification from "./ItemCardNotification";
 import { ITEM_SIZE_HEIGHT } from "@/shared/consts";
-
+import { setStateType } from "@/shared/types";
 export default function MenuSectionNotifiacion({
 	setMenuActive,
 }: {
-	setMenuActive: any;
+	setMenuActive: setStateType<boolean>;
 }) {
-	const notificaciones = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+	const notificaciones = [{ type: "chat" }, 2, 3, 4, 5, 6, 7, 8, 9];
 	useEffect(() => {
 		setMenuActive(true);
 	}, [setMenuActive]);

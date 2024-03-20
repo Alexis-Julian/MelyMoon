@@ -9,3 +9,5 @@ export type TypographyClassVariantTypes =
 	| "bigger";
 
 export type InputTypes = "text" | "email" | "password";
+
+export type setStateType = React.Dispatch<React.SetStateAction<string>>;

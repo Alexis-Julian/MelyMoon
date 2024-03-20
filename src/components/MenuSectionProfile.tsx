@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import StyledTypography from "./StyledTypography";
-import ChatHeader from "./MenuHeader";
 import Image from "next/image";
+import { setStateType } from "@/shared/types";
 
 export default function MenuSectionProfile({
 	setMenuActive,
 }: {
-	setMenuActive: any;
+	setMenuActive: setStateType<boolean>;
 }) {
 	useEffect(() => {
 		setMenuActive(true);

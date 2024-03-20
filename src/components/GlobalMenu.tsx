@@ -1,24 +1,13 @@
-import ChatHeader from "./MenuHeader";
+import { setStateType } from "@/shared/types";
 import MenuItem from "./MenuItem";
-import { useEffect, useState } from "react";
-
+import { SectionMenuUser as List } from "@/shared/consts";
 export default function GlobalMenu({
 	changeMenu,
 	handleOpenMenu,
-	statusMenu,
 }: {
-	changeMenu: any;
+	changeMenu: setStateType<string>;
 	handleOpenMenu: any;
-	statusMenu: boolean;
 }) {
-	const List = [
-		{ name: "Inicio" },
-		{ name: "Buscar" },
-		{ name: "Mensajes" },
-		{ name: "Notificaciones" },
-		{ name: "Perfil" },
-	];
-
 	function handleChangeMenu(item: string) {
 		handleOpenMenu();
 		setTimeout(() => {

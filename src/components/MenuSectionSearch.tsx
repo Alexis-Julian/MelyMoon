@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import StyledTypography from "./StyledTypography";
 import StyledInput from "./StyledInput";
 import ItemCardUser from "./ItemCardUserChat";
+import { setStateType } from "@/shared/types";
 
 export default function MenuSectionSearch({
 	setMenuActive,
 }: {
-	setMenuActive: any;
+	setMenuActive: setStateType<boolean>;
 }) {
 	useEffect(() => {
 		setMenuActive(true);

@@ -2,7 +2,7 @@ import Link from "next/link";
 import StyledTypography from "./StyledTypography";
 import Image from "next/image";
 
-export default function GlobalHeader({ openMenu }: { openMenu: any }) {
+export default function GlobalHeader({ openMenu }: { openMenu: () => void }) {
 	const LinkNavigations = [
 		{ name: "Detalles" },
 		{ name: "Contenido" },
