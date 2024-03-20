@@ -5,14 +5,14 @@ import StyledTypography from "./StyledTypography";
 import { useState } from "react";
 import ChatBox from "./ChatBox";
 
-export default function ChatCardUser({
+export default function ItemCardUser({
 	props,
 	active,
 	closeChat,
 }: {
 	props: any;
-	active: boolean;
-	closeChat: any;
+	active?: boolean;
+	closeChat?: any;
 }) {
 	return (
 		<div className="h-full w-full">

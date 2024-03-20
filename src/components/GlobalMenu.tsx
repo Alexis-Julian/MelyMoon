@@ -27,9 +27,7 @@ export default function GlobalMenu({
 	}
 
 	return (
-		<div className="size-full rounded-lg p-1">
-			<ChatHeader>Menu</ChatHeader>
-
+		<div className="size-full rounded-lg ">
 			<nav>
 				<ul className={`flex flex-col gap-4 mt-2 `}>
 					{List.map((item, index) => {

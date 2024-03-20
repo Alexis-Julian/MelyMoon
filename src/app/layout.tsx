@@ -22,8 +22,7 @@ export default function RootLayout({
 					inter.className + ` bg-gradient-to-b from-[#eea5a6] to-[#ffd0ec]`
 				}
 			>
-				<GlobalComponents />
-				<div className="h-[90%]">{children}</div>
+				{children}
 			</body>
 		</html>
 	);

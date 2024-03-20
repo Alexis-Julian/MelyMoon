@@ -6,6 +6,7 @@ import GlobalChat from "./GlobalChat";
 import MenuSectionNotification from "./MenuSectionNotification";
 import MenuSectionSearch from "./MenuSectionSearch";
 import MenuSectionProfile from "./MenuSectionProfile";
+import ChatHeader from "./MenuHeader";
 
 export default function GlobalComponents() {
 	const [useMenuActive, setMenuActive] = useState<boolean>(false);
@@ -14,7 +15,7 @@ export default function GlobalComponents() {
 	function handleOpenMenu() {
 		setMenuActive(!useMenuActive);
 	}
-	console.log(useTypeMenu);
+
 	const List = [
 		{
 			name: "Inicio",
@@ -30,7 +31,9 @@ export default function GlobalComponents() {
 		},
 		{
 			name: "Buscar",
-			components: [<MenuSectionSearch key={"search"} />],
+			components: [
+				<MenuSectionSearch key={"search"} setMenuActive={setMenuActive} />,
+			],
 			active: false,
 		},
 		{
@@ -40,7 +43,12 @@ export default function GlobalComponents() {
 		},
 		{
 			name: "Notificaciones",
-			components: [<MenuSectionNotification key={"notification"} />],
+			components: [
+				<MenuSectionNotification
+					setMenuActive={setMenuActive}
+					key={"notification"}
+				/>,
+			],
 			active: false,
 		},
 		{
@@ -65,9 +73,10 @@ export default function GlobalComponents() {
 						menu.name == useTypeMenu && (
 							<div
 								key={index}
-								className="bg-white/30  rounded-xl h-full w-full"
+								className="bg-white/30  rounded-xl size-full p-1 flex flex-col  gap-4 justify-center overflow-hidden"
 							>
-								{menu.components}
+								<ChatHeader>{menu.name}</ChatHeader>
+								<section className="h-[90%]">{menu.components}</section>
 							</div>
 						)
 					);

@@ -12,9 +12,8 @@ export default function MenuSectionProfile({
 		setMenuActive(true);
 	}, [setMenuActive]);
 	return (
-		<div className="size-full flex flex-col p-1 gap-4 justify-center">
-			<ChatHeader>Perfil</ChatHeader> {/* INYECTAR EN EL COMPONENTE GLOBAL */}
-			<div className="h-[90%] grid grid-cols-1 grid-rows-[1fr_0.6fr_1fr] gap-6 bg-white/20 p-2  rounded-lg shadow-md shadow-black/20">
+		<div className="size-full">
+			<div className="h-full grid grid-cols-1 grid-rows-[1fr_0.6fr_1fr] gap-6 bg-white/20 p-2  rounded-lg shadow-md shadow-black/20">
 				<div className="h-full flex flex-col  gap-4 ">
 					<div className="bg-primary/30 rounded-lg p-1">
 						<StyledTypography

@@ -1,5 +1,5 @@
 "use client";
-import ChatCardUser from "./ChatItemsUser";
+import ItemCardUser from "./ItemCardUserChat";
 import ChatHeader from "./MenuHeader";
 import StyledTypography from "./StyledTypography";
 import { useEffect, useState, useRef } from "react";
@@ -61,44 +61,41 @@ export default function GlobalChat({ setMenuActive }: { setMenuActive: any }) {
 	}, [setMenuActive]);
 
 	return (
-		<div className="h-full w-full  flex flex-col p-1 gap-2">
-			<ChatHeader>Bandeja de entrada</ChatHeader>
-			<section className="mt-1 h-[90%] flex flex-col gap-1 ">
-				<div className="bg-primary/20 ">
-					<StyledTypography variant="body" className="text-black/60 pl-4">
-						Contactos
-					</StyledTypography>
-				</div>
-				<nav className="bg-primary/20 h-full ">
-					<ul className={`flex flex-col gap-4 h-full`} ref={element}>
-						{contactos.map((user, index) => {
-							return (
-								<li
-									className={`bg-primary/80 rounded-md  cursor-pointer transition-all ${
-										useChatUserActive == index && "bg-primary/40 cursor-default"
-									} `}
-									onClick={() => handleOpenChat(index)}
-									key={index}
-									style={{
-										minHeight: `${
-											useChatUserActive == index
-												? useSizeChat?.height || "60"
-												: "60"
-										}px`,
-										order: useChatUserActive == index ? -1 : 0,
-									}}
-								>
-									<ChatCardUser
-										props={user}
-										active={useChatUserActive == index ? true : false}
-										closeChat={handleCloseChat}
-									/>
-								</li>
-							);
-						})}
-					</ul>
-				</nav>
-			</section>
-		</div>
+		<section className="mt-1 size-full flex flex-col gap-1 ">
+			<div className="bg-primary/20 ">
+				<StyledTypography variant="body" className="text-black/60 pl-4">
+					Contactos
+				</StyledTypography>
+			</div>
+			<nav className="bg-primary/20 h-full ">
+				<ul className={`flex flex-col gap-4 h-full`} ref={element}>
+					{contactos.map((user, index) => {
+						return (
+							<li
+								className={`bg-primary/80 rounded-md  cursor-pointer transition-all ${
+									useChatUserActive == index && "bg-primary/40 cursor-default"
+								} `}
+								onClick={() => handleOpenChat(index)}
+								key={index}
+								style={{
+									minHeight: `${
+										useChatUserActive == index
+											? useSizeChat?.height || "60"
+											: "60"
+									}px`,
+									order: useChatUserActive == index ? -1 : 0,
+								}}
+							>
+								<ItemCardUser
+									props={user}
+									active={useChatUserActive == index ? true : false}
+									closeChat={handleCloseChat}
+								/>
+							</li>
+						);
+					})}
+				</ul>
+			</nav>
+		</section>
 	);
 }
