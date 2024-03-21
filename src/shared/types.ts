@@ -10,4 +10,9 @@ export type TypographyClassVariantTypes =
 
 export type InputTypes = "text" | "email" | "password";
 
-export type setStateType = React.Dispatch<React.SetStateAction<string>>;
+export type setStateType<T> = React.Dispatch<React.SetStateAction<T>>;
+
+export type List = {
+	name: string;
+	components: React.ReactNode;
+};

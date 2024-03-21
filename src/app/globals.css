@@ -23,6 +23,16 @@ body {
 }
 
 @layer components {
+	/* hover:-rotate-90 hover:translate-y-[92%]
+-rotate-90 hover:-translate-y-[92%] */
+
+	.itemmenu:hover > div:first-child {
+		transform: rotate(-90deg) translateX(-92%);
+	}
+	.itemmenu:hover > div:last-child {
+		transform: rotate(-90deg) translateX(92%);
+	}
+
 	.svgborder-1 {
 		fill: #383635;
 	}
