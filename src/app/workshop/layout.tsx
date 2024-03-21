@@ -6,9 +6,9 @@ export default function WorkshopLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className="h-full w-full">
+		<div className="h-full w-full overflow-hidden">
 			<GlobalComponents />
-			<div className="h-[90%]">{children}</div>
+			<div className="h-[90%] overflow-hidden">{children}</div>
 		</div>
 	);
 }

@@ -1,6 +1,7 @@
 import { Menu_info_list, setStateType } from "@/shared/types";
 import MenuItem from "./MenuItem";
 import ChatHeader from "./MenuHeader";
+import GlobalHeader from "./GlobalHeader";
 export default function GlobalMenu({
 	changeMenu,
 	menuActive,
@@ -23,7 +24,7 @@ export default function GlobalMenu({
 		return (
 			<>
 				<div className="size-full left-0 top-0  rounded-lg border-2 border-primary blur-sm  absolute -z-10"></div>
-				<ChatHeader>Inicio</ChatHeader>
+				<ChatHeader>Menu</ChatHeader>
 				<nav>
 					<ul className={`flex flex-col -4 mt-2 gap-4`}>
 						{sectionsMenuUser.map((item: Menu_info_list, index: number) => {
@@ -52,7 +53,12 @@ export default function GlobalMenu({
 
 		if (!response) return <MenuSelector />;
 
-		return response.components;
+		return (
+			<>
+				<ChatHeader>{response.name}</ChatHeader>
+				{response.components}
+			</>
+		);
 	}
 
 	return (
