@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
-import StyledInput from "./StyledInput";
-import ChatHeader from "./MenuHeader";
+import { useState } from "react";
 import StyledTypography from "./StyledTypography";
 import { RiImageAddFill } from "react-icons/ri";
+import Image from "next/image";
 
 export default function MenuSectionCreatePost() {
+	const [useFile, setFile] = useState("No se selecciono una imagen");
+	const [image, setImage] = useState<string>("");
+	console.log(image);
+
 	const test = [
 		{ name: "W", components: [], index: 0 },
 		{ name: "T", components: [], index: 1 },
@@ -13,8 +16,8 @@ export default function MenuSectionCreatePost() {
 
 	const [useCreatePost, setCreatePost] = useState(test[2]);
 
-	const handleUploadImage = (e: any) => {
-		console.log(e);
+	const handleUploadImage = ({ target: { files } }: any) => {
+		files && setImage(URL.createObjectURL(files[0]));
 	};
 
 	return (
@@ -55,12 +58,15 @@ export default function MenuSectionCreatePost() {
 						<input
 							onChange={handleUploadImage}
 							type="file"
+							accept="image/*"
 							id="uploadimage"
 							className="hidden"
 						/>
 					</label>
 				</div>
-				<div className="h-[45%]">ACA VA LA IMAGEN</div>
+				<div className="h-[45%] overflow-y-auto  aspect-square">
+					{image && <Image src={image} width={250} height={250} alt="" />}
+				</div>
 			</div>
 			<div className=" h-[10%]  pt-2 mb-4 border-t-2 border-primary/30 rounded-md ">
 				<button className="  h-full min-h-[82px] max-h-[82px] w-full bg-primary/20 hover:bg-primary/40 hover:scale-95 transition-all  rounded-t-lg flex items-center justify-center  shadow-md shadow-primary/50 hover:shadow-primary">
