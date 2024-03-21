@@ -34,7 +34,12 @@ export default function GlobalComponents() {
 		{ name: "Inicio", components: [] },
 		{
 			name: "Crear Publicacion",
-			components: [<MenuSectionCreatePost key={"create"} />],
+			components: [
+				<MenuSectionCreatePost
+					key={"create"}
+					setMenuActve={setMenuActvePost}
+				/>,
+			],
 		},
 		{ name: "Eliminar Publicacion", components: [] },
 		{ name: "Ver tus Publicaciones", components: [] },
@@ -71,11 +76,14 @@ export default function GlobalComponents() {
 
 	return (
 		<>
-			<GlobalHeader openMenu={handleOpenMenu} />
+			<GlobalHeader
+				openMenu={handleOpenMenu}
+				openMenuPost={handleOpenMenuPost}
+			/>
 
 			{/* ESTE ES EL MENU PARA VER TU PERFIL BUSCAR PERFILES VER TUS NOTIFICACIONES*/}
 			<div
-				className={`absolute left-0 h-[90%] w-[20%] z-50 transition-all ${
+				className={`absolute left-0 h-[90%] w-[20%] z-50 transition-all  ${
 					useMenuActive ? "translate-x-0" : "-translate-x-[100%]"
 				} `}
 			>
@@ -89,7 +97,9 @@ export default function GlobalComponents() {
 
 			{/* ESTE ES EL MENU CRUD PARA CREAR O ELIMINAR O LEER PUBLICACIONES */}
 			<div
-				className={`absolute right-0 h-[90%] w-[20%] z-50 transition-all translate-x-0 overflow-hidden`}
+				className={`absolute right-0 h-[90%] w-[20%] z-50 transition-all translate-x-0 overflow-hidden ${
+					useMenuActivePost ? "translate-x-0" : "translate-x-[100%]"
+				}`}
 			>
 				<GlobalMenu
 					changeMenu={setTypeMenuPost}

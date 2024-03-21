@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StyledTypography from "./StyledTypography";
 import { RiImageAddFill } from "react-icons/ri";
 import Image from "next/image";
+import { setStateType } from "@/shared/types";
 
-export default function MenuSectionCreatePost() {
+export default function MenuSectionCreatePost({
+	setMenuActve,
+}: {
+	setMenuActve: setStateType<boolean>;
+}) {
 	const [useFile, setFile] = useState("No se selecciono una imagen");
 	const [image, setImage] = useState<string>("");
 	console.log(image);
@@ -19,6 +24,10 @@ export default function MenuSectionCreatePost() {
 	const handleUploadImage = ({ target: { files } }: any) => {
 		files && setImage(URL.createObjectURL(files[0]));
 	};
+
+	useEffect(() => {
+		setMenuActve(true);
+	}, [setMenuActve]);
 
 	return (
 		<section className="size-full flex flex-col gap-4">
