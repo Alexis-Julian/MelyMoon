@@ -1,8 +1,9 @@
 // interface User
 
-import { hashPassword } from "@/libs/bcrypt";
+import { comparePassword, hashPassword } from "@/libs/bcrypt";
 import { createToken } from "@/libs/jwt";
 import { conn } from "@/libs/mysql";
+import { User } from "@/shared/types";
 import { vaildateEmail } from "@/util/auth.utils";
 
 class AuthServices {
@@ -17,7 +18,7 @@ class AuthServices {
 		return AuthServices.instance;
 	}
 
-	async createUser(user: any) {
+	async createUser(user: any): Promise<string | Error> {
 		const { username, email, password } = user;
 
 		if (!(username && email && password)) throw new Error("Invalid fields");
@@ -35,14 +36,35 @@ class AuthServices {
 
 		const tk = await createToken({ email, username }, "1d");
 
-		if (tk) return tk;
+		return tk;
 	}
 
 	updateUser() {}
 
 	removeUser() {}
 
-	getUser() {}
+	async getUser(user: any) {
+		const { email, password } = user;
+
+		if (!(email && password)) throw new Error("Invalid fields");
+
+		const response: Array<User> | undefined = await conn.query(
+			"SELECT * FROM USERS WHERE email_address = ?",
+			[email]
+		);
+
+		if (!response) throw new Error("User not exist");
+
+		const { email_address, username, password_account } = response[0];
+
+		const isCorrectPassword = await comparePassword(password, password_account);
+
+		if (!isCorrectPassword) throw new Error("Password not correct");
+
+		const tk = await createToken({ email_address, username }, "1d");
+
+		return tk;
+	}
 
 	findByIdUser() {}
 }

@@ -16,3 +16,9 @@ export type Menu_info_list = {
 	name: string;
 	components: React.ReactNode;
 };
+
+export type User = {
+	email_address: string;
+	username: string;
+	password_account: string;
+};
