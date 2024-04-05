@@ -14,3 +14,6 @@ export const SectionMenuPost = [
 	{ name: "Eliminar Publicacion" },
 	{ name: "Ver tus Publicaciones" },
 ] as const;
+
+export const regularExpressionForEmail =
+	/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;

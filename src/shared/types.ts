@@ -12,7 +12,7 @@ export type InputTypes = "text" | "email" | "password";
 
 export type setStateType<T> = React.Dispatch<React.SetStateAction<T>>;
 
-export type List = {
+export type Menu_info_list = {
 	name: string;
 	components: React.ReactNode;
 };

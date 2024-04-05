@@ -1,34 +1,22 @@
-import fs from "fs";
 import { NextResponse } from "next/server";
-import { HashPassword } from "@/libs/bcrypt";
-import { createToken } from "@/libs/jwt";
-import AuthUser from "@/utils/AuthService";
-import Auth from "@/app/auth/page";
+import { conn } from "@/libs/mysql";
+import { hashPassword } from "@/libs/bcrypt";
+import authService from "@/services/auth.service";
 
-const AuthenticatorUsers = new AuthUser();
-
-export async function GET(req: Request) {
+/* export async function GET(req: Request) {
 	// const { message, emails, date } = await req.json();
-}
+	const result = await conn.query("SELECT * FROM USERNAME");
+
+	console.log(result);
+	return NextResponse.json({ name: "1" });
+} */
 
 export async function POST(req: Request) {
-	const { email, password, username } = await req.json();
+	const data = await req.json();
 	try {
-		if (!email && !password && !username) throw "all the fields are required";
+		const response = await authService.createUser(data);
 
-		const password_hash: string | any = await HashPassword(password);
-
-		const response = await AuthenticatorUsers.createUser({
-			email,
-			password_hash,
-			username,
-		});
-
-		if (response.statusCode == 404) throw response.message;
-
-		const token = await createToken({ email, username }, "1d");
-
-		return NextResponse.json({ token });
+		return NextResponse.json({ token: response });
 	} catch (err: any) {
 		return NextResponse.json({
 			message: err.message,
