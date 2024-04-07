@@ -17,3 +17,5 @@ export const SectionMenuPost = [
 
 export const regularExpressionForEmail =
 	/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+
+export const ENDPOINT = "http://localhost:3000/" as const;

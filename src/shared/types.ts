@@ -22,3 +22,8 @@ export type User = {
 	username: string;
 	password_account: string;
 };
+
+export type ResponseAuth = {
+	statusCode: number;
+	token: string;
+};

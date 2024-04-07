@@ -19,3 +19,11 @@ export function createToken(
 		});
 	});
 }
+
+export function verifyToken(token: string): string | jwt.JwtPayload {
+	const TOKEN: string | undefined = process.env.TOKEN;
+
+	if (!TOKEN) throw new Error("TOKEN is required");
+
+	return jwt.verify(token, TOKEN);
+}

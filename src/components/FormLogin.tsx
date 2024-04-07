@@ -1,11 +1,24 @@
 "use client";
-import Image from "next/image";
+import Cookies from "js-cookie";
 import StyledTypography from "./StyledTypography";
 import StyledInput from "./StyledInput";
 import SvgButton from "./SvgButton";
 import { FormEvent } from "react";
+import { ENDPOINT } from "@/shared/consts";
+import { useRouter } from "next/navigation";
+import { ResponseAuth } from "@/shared/types";
+import { useEffect, useState } from "react";
 
 export default function FormLogin() {
+	const router = useRouter();
+	const [useToken, setToken] = useState(
+		Cookies.get("token") ? Cookies.get("token") : null
+	);
+
+	useEffect(() => {
+		if (useToken) return router.push("/workshop");
+	}, [useToken, router]);
+
 	function handleSubmitForm(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const emailInput = (e.target as HTMLFormElement)[
@@ -16,8 +29,32 @@ export default function FormLogin() {
 			"password"
 		] as HTMLInputElement;
 
-		const emailValue = emailInput.value;
-		const passwordValue = passwordInput.value;
+		const email = emailInput.value;
+		const password = passwordInput.value;
+
+		//Generar carga
+		fetch(ENDPOINT + "api/auth/login", {
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ email, password }),
+			method: "POST",
+		})
+			.then((res) => res.json())
+			.then((response: ResponseAuth) => {
+				console.log(response);
+				if (response.statusCode == 202) {
+					Cookies.set("token", response.token);
+					setToken(response.token);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+				//Frenar Cargar
+			})
+			.finally(() => {
+				//Frenar carga
+			});
 	}
 
 	return (
