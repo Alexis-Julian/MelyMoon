@@ -7,10 +7,6 @@ function getCookie(name: string): string | undefined {
 	return cookies().get(name)?.value;
 }
 
-async function deleteCookie() {
-	cookies().delete("token");
-}
-
 async function validateTokenInServer(cookieToken: string): Promise<boolean> {
 	try {
 		const response = await fetch(ENDPOINT + "api/auth/token", {
