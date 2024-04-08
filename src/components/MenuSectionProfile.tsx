@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import StyledTypography from "./StyledTypography";
 import Image from "next/image";
 import { setStateType } from "@/shared/types";
+import { useAppContext } from "@/context";
 
 export default function MenuSectionProfile({
 	setMenuActive,
@@ -11,6 +12,8 @@ export default function MenuSectionProfile({
 	useEffect(() => {
 		setMenuActive(true);
 	}, [setMenuActive]);
+	const { auth } = useAppContext();
+	console.log(auth, "<- Profile");
 	return (
 		<div className="size-full">
 			<div className="h-full grid grid-cols-1 grid-rows-[1fr_0.6fr_1fr] gap-6 bg-white/20 p-2  rounded-lg shadow-md shadow-black/20">
@@ -94,7 +97,7 @@ export default function MenuSectionProfile({
 								Email :
 							</StyledTypography>
 							<StyledTypography className="normal-case" variant="h3">
-								melaniperalta57@
+								{String(auth.email_address).split("@")[0]}
 							</StyledTypography>
 						</span>
 						<span className=" flex gap-2">
@@ -105,7 +108,7 @@ export default function MenuSectionProfile({
 								Usuario :
 							</StyledTypography>
 							<StyledTypography className="text normal-case" variant="h3">
-								Mely
+								{auth.username}
 							</StyledTypography>
 						</span>
 					</div>

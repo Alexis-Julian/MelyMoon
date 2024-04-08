@@ -8,11 +8,43 @@ import MenuSectionSearch from "./MenuSectionSearch";
 import MenuSectionProfile from "./MenuSectionProfile";
 import ChatHeader from "./MenuHeader";
 import GlobalMenuPost from "./GlobalMenuPost";
-import { SectionMenuPost, SectionMenuUser } from "@/shared/consts";
+import { ENDPOINT, SectionMenuPost, SectionMenuUser } from "@/shared/consts";
 import { Menu_info_list } from "@/shared/types";
 import MenuSectionCreatePost from "./MenuSectionCreatePost";
-
+import { useEffect } from "react";
+import { useAppContext } from "@/context";
+import Cookies from "js-cookie";
 export default function GlobalComponents() {
+	const { auth, setAuth } = useAppContext();
+
+	useEffect(() => {
+		async function getAuth() {
+			try {
+				const response = await fetch(ENDPOINT + "api/auth/token", {
+					headers: {
+						Authorization: "Bearer " + Cookies.get("token"),
+					},
+				});
+
+				const data = await response.json();
+
+				if (data.statusCode == 200) {
+					console.log(data);
+					setAuth(data.token);
+				}
+			} catch (e: any) {
+				console.log("Syntax error " + e.message);
+				return false;
+			}
+		}
+		if (Object.keys(auth).length <= 0) {
+			console.log("Peticion"); // TEST PARA VER LAS PTEICIONES AL SERVIDOR
+			getAuth();
+		}
+	}, [auth, setAuth]);
+
+	console.log(auth, "<- GLOBAL COMPONENTS");
+
 	function handleOpenMenu(): void {
 		return setMenuActive(!useMenuActive);
 	}

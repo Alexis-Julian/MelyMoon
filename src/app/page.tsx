@@ -1,6 +1,8 @@
+"use client";
 import SvgCatInHole from "@/components/SvgCatInHole";
 import SvgFoot from "@/components/SvgFoot";
 import Image from "next/image";
+import { useAppContext } from "@/context";
 
 export default function Home() {
 	return (

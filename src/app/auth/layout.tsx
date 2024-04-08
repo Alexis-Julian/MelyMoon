@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Alice } from "next/font/google";
-
 const inter = Alice({ weight: "400", subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
